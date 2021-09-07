@@ -1,7 +1,7 @@
-import { createGlobalStyle } from 'styled-components';
+import { createGlobalStyle } from 'styled-components'
 
-import NunitoWoff from "./resources/fonts/nunito-v16-latin-regular.woff";
-import NunitoWoff2 from "./resources/fonts/nunito-v16-latin-regular.woff2";
+import NunitoWoff from './resources/fonts/nunito-v16-latin-regular.woff'
+import NunitoWoff2 from './resources/fonts/nunito-v16-latin-regular.woff2'
 
 const GlobalStyle = createGlobalStyle`
 
@@ -34,6 +34,6 @@ const GlobalStyle = createGlobalStyle`
       text-decoration: underline;
     }
   }
-`;
+`
 
-export default GlobalStyle;
+export default GlobalStyle

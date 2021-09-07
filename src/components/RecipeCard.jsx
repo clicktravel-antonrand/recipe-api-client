@@ -1,16 +1,16 @@
-import { Link} from 'react-router-dom';
+import { Link } from 'react-router-dom'
 
-import { Button } from './atoms/Button';
+import { Button } from './atoms/Button'
 
-import styled from 'styled-components';
+import styled from 'styled-components'
 
 const RecipeHeader = styled.h3`
   color: #4eb6ee;
-`;
+`
 
 const RecipeSubtitle = styled.h4`
   margin-bottom: 0;
-`;
+`
 
 const IngredientsList = styled.ul`
   margin-top: 0;
@@ -20,11 +20,11 @@ const IngredientsList = styled.ul`
 
 const RecipeContainer = styled.div`
   border-radius: 10px;
-  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.3);
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.3);
   transition: 0.3s;
 
   :hover {
-    box-shadow: 0 8px 15px 0 rgba(0,0,0,0.3);
+    box-shadow: 0 8px 15px 0 rgba(0, 0, 0, 0.3);
   }
 
   margin: 10px;
@@ -32,29 +32,35 @@ const RecipeContainer = styled.div`
 
   min-width: 300px;
   flex: 1 1 0px;
-`;
+`
 
-export const RecipeCard = (props) => <RecipeContainer>
-  <RecipeHeader>{ props.recipe.name }</RecipeHeader>
-  <div>
-    <RecipeSubtitle>Description</RecipeSubtitle>
-    <p>{ props.recipe.description }</p>
-  </div>
-  <div>
-    <RecipeSubtitle>Ingredients</RecipeSubtitle>
-    <IngredientsList>
-      {
-        props.recipe.ingredients.map((ingredient) =>
+export const RecipeCard = (props) => (
+  <RecipeContainer>
+    <RecipeHeader>{props.recipe.name}</RecipeHeader>
+    <div>
+      <RecipeSubtitle>Description</RecipeSubtitle>
+      <p>{props.recipe.description}</p>
+    </div>
+    <div>
+      <RecipeSubtitle>Ingredients</RecipeSubtitle>
+      <IngredientsList>
+        {props.recipe.ingredients.map((ingredient) => (
           <li key={ingredient.name}>{ingredient.name}</li>
-        )
-      }
-    </IngredientsList>
-  </div>
-  <div>
-    <Button danger onClick={() => {props.deleteHandler(props.recipe.id)}}>Delete Recipe</Button>
-    <Link to={`/edit-recipe/${props.recipe.id}`}>
-      <Button>Edit Recipe</Button>
-    </Link>
-  </div>
-
-</RecipeContainer>
+        ))}
+      </IngredientsList>
+    </div>
+    <div>
+      <Button
+        danger
+        onClick={() => {
+          props.deleteHandler(props.recipe.id)
+        }}
+      >
+        Delete Recipe
+      </Button>
+      <Link to={`/edit-recipe/${props.recipe.id}`}>
+        <Button>Edit Recipe</Button>
+      </Link>
+    </div>
+  </RecipeContainer>
+)

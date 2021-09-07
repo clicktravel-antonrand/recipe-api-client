@@ -1,7 +1,7 @@
-import styled from 'styled-components';
+import styled from 'styled-components'
 
 import logo from '../resources/logo.png'
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom'
 
 const Nav = styled.nav`
   background: #fc5271;
@@ -15,7 +15,7 @@ const NavContainer = styled.div`
   padding-left: 10px;
   height: 100%;
   justify-content: space-between;
-`;
+`
 
 const NavLogoContainer = styled.div`
   display: inline-flex;
@@ -24,7 +24,7 @@ const NavLogoContainer = styled.div`
   a:hover {
     text-decoration: none;
   }
-`;
+`
 
 const LogoLink = styled(Link)`
   display: inline-flex;
@@ -34,7 +34,7 @@ const LogoLink = styled(Link)`
 
 const NavLinksContainer = styled.div`
   padding-right: 20px;
-`;
+`
 
 const NavLogo = styled.img`
   width: 40px;
@@ -43,7 +43,7 @@ const NavLogo = styled.img`
 const NavLink = styled(Link)`
   color: #fff;
   text-decoration: none;
-  
+
   :hover {
     text-decoration: underline;
   }
@@ -56,19 +56,19 @@ const Header = styled.h1`
   color: #fff;
 `
 
-export const Navbar = () => <Nav>
-  <NavContainer>
+export const Navbar = () => (
+  <Nav>
+    <NavContainer>
       <NavLogoContainer>
         <LogoLink to="/">
-          <NavLogo src={logo} alt="Recipe App Logo"/>
+          <NavLogo src={logo} alt="Recipe App Logo" />
           <Header>recipes.</Header>
         </LogoLink>
       </NavLogoContainer>
 
       <NavLinksContainer>
-        <NavLink to="/acknowledgements">
-          Acknowledgements
-        </NavLink>
+        <NavLink to="/acknowledgements">Acknowledgements</NavLink>
       </NavLinksContainer>
-  </NavContainer>
-</Nav>
+    </NavContainer>
+  </Nav>
+)

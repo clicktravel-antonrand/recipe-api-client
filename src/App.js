@@ -1,20 +1,15 @@
-import { Fragment } from 'react';
+import { Fragment } from 'react'
 
-import GlobalStyle from './GlobalStyle';
+import GlobalStyle from './GlobalStyle'
 
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-} from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 
-import { ViewRecipes } from './screens/ViewRecipes';
-import { AddRecipe } from './screens/AddRecipe';
-import { EditRecipe } from './screens/EditRecipe';
+import { ViewRecipes } from './screens/ViewRecipes'
+import { AddRecipe } from './screens/AddRecipe'
+import { EditRecipe } from './screens/EditRecipe'
 
-import { Navbar } from './components/Navbar';
-import { Acknowledgements } from './screens/Acknowledgements';
-
+import { Navbar } from './components/Navbar'
+import { Acknowledgements } from './screens/Acknowledgements'
 
 function App() {
   return (
@@ -38,7 +33,7 @@ function App() {
         </Switch>
       </Router>
     </Fragment>
-  );
+  )
 }
 
-export default App;
+export default App

@@ -1,4 +1,4 @@
-import styled, { css } from 'styled-components';
+import styled, { css } from 'styled-components'
 
 export const Input = styled.input`
   padding: 0.6em 0.5em;
@@ -10,7 +10,9 @@ export const Input = styled.input`
   margin-right: 5px;
   display: inline-block;
 
-  ${props => props.fullWidth && css`
-    width: 100%;
-  `}
+  ${(props) =>
+    props.fullWidth &&
+    css`
+      width: 100%;
+    `}
 `
