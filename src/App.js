@@ -1,51 +1,43 @@
-import logo from './logo.svg';
-import './App.css';
+import { Fragment } from 'react';
+
+import GlobalStyle from './GlobalStyle';
 
 import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Link,
 } from 'react-router-dom';
 
-import { AddRecipe } from './pages/AddRecipe';
-import { ListRecipes } from './pages/ListRecipes';
+import { ViewRecipes } from './screens/ViewRecipes';
+import { AddRecipe } from './screens/AddRecipe';
+import { EditRecipe } from './screens/EditRecipe';
 
-
+import { Navbar } from './components/Navbar';
+import { Acknowledgements } from './screens/Acknowledgements';
 
 
 function App() {
   return (
-    <Router>
-      <Switch>
-        <Route path="/add-recipe">
-          <AddRecipe />
-        </Route>
-        <Route path="/">
-          <ListRecipes />
-        </Route>
-      </Switch>
-    </Router>
-
-
-
-
-    // <div className="App">
-    //   <header className="App-header">
-    //     <img src={logo} className="App-logo" alt="logo" />
-    //     <p>
-    //       Edit <code>src/App.js</code> and save to reload.
-    //     </p>
-    //     <a
-    //       className="App-link"
-    //       href="https://reactjs.org"
-    //       target="_blank"
-    //       rel="noopener noreferrer"
-    //     >
-    //       Learn React
-    //     </a>
-    //   </header>
-    // </div>
+    <Fragment>
+      <GlobalStyle />
+      <Router>
+        <Navbar />
+        <Switch>
+          <Route path="/add-recipe">
+            <AddRecipe />
+          </Route>
+          <Route path="/edit-recipe/:recipeId">
+            <EditRecipe />
+          </Route>
+          <Route path="/acknowledgements">
+            <Acknowledgements />
+          </Route>
+          <Route path="/">
+            <ViewRecipes />
+          </Route>
+        </Switch>
+      </Router>
+    </Fragment>
   );
 }
 
