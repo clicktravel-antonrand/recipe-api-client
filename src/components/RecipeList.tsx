@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 
 import { RecipeCard } from './RecipeCard'
+import { Recipe } from '../data/recipes/types'
 
 const RecipeContainer = styled.div`
   display: inline-flex;
@@ -8,13 +9,18 @@ const RecipeContainer = styled.div`
   flex-wrap: wrap;
 `
 
-export const RecipeList = (props) => {
+type RecipeListProps = {
+  recipes: Recipe[]
+  deleteHandler: (recipeId: bigint) => void
+}
+
+export const RecipeList = (props: RecipeListProps) => {
   return (
     <RecipeContainer>
       {props.recipes &&
         props.recipes.map((recipe) => (
           <RecipeCard
-            key={recipe.id}
+            key={Number(recipe.id)}
             recipe={recipe}
             deleteHandler={props.deleteHandler}
           />

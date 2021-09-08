@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import { Button } from './atoms/Button'
 
 import styled from 'styled-components'
+import { Recipe } from '../data/recipes/types'
 
 const RecipeHeader = styled.h3`
   color: #4eb6ee;
@@ -31,10 +32,15 @@ const RecipeContainer = styled.div`
   padding: 0 15px;
 
   min-width: 300px;
-  flex: 1 1 0px;
+  flex: 1 1 0;
 `
 
-export const RecipeCard = (props) => (
+type RecipeProps = {
+  recipe: Recipe
+  deleteHandler: (recipeId: bigint) => void
+}
+
+export const RecipeCard = (props: RecipeProps) => (
   <RecipeContainer>
     <RecipeHeader>{props.recipe.name}</RecipeHeader>
     <div>

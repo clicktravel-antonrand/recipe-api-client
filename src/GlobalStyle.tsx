@@ -1,6 +1,8 @@
 import { createGlobalStyle } from 'styled-components'
 
+// @ts-ignore
 import NunitoWoff from './resources/fonts/nunito-v16-latin-regular.woff'
+// @ts-ignore
 import NunitoWoff2 from './resources/fonts/nunito-v16-latin-regular.woff2'
 
 const GlobalStyle = createGlobalStyle`

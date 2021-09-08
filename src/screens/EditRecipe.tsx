@@ -6,18 +6,35 @@ import { RecipeForm } from '../components/RecipeForm'
 
 import { getRecipeById, patchRecipe } from '../data/recipes/api'
 
-export const EditRecipe = () => {
-  const { recipeId } = useParams()
-  const [recipe, setRecipe] = useState()
+import { BaseRecipe, Recipe } from '../data/recipes/types'
 
-  useEffect(async () => {
-    const result = await getRecipeById(recipeId)
-    setRecipe(result)
+type EditRecipeParams = {
+  recipeId: string
+}
+
+export const EditRecipe = () => {
+  const { recipeId } = useParams<EditRecipeParams>()
+  const [recipe, setRecipe] = useState<Recipe>()
+
+  useEffect(() => {
+    const getRecipeWithId = async () => {
+      const result = await getRecipeById({
+        recipeId: BigInt(recipeId),
+      })
+      setRecipe(result)
+    }
+
+    getRecipeWithId()
   }, [])
 
-  const handleSubmit = async (name, description, ingredients) => {
+  const handleSubmit = async ({
+    name,
+    description,
+    ingredients,
+  }: BaseRecipe) => {
+    console.log('Patch Recipe')
     await patchRecipe({
-      recipeId,
+      recipeId: BigInt(recipeId),
       name,
       description,
       ingredients,

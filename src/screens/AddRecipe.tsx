@@ -4,9 +4,14 @@ import { PageContainer } from '../components/atoms/PageContainer'
 import { RecipeForm } from '../components/RecipeForm'
 
 import { postRecipe } from '../data/recipes/api'
+import { BaseRecipe } from '../data/recipes/types'
 
 export const AddRecipe = () => {
-  const handleSubmit = async (name, description, ingredients) => {
+  const handleSubmit = async ({
+    name,
+    description = '',
+    ingredients,
+  }: BaseRecipe) => {
     await postRecipe({
       name,
       description,

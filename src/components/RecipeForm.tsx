@@ -8,14 +8,23 @@ import { TextArea } from './atoms/TextArea'
 
 import { IngredientsList } from './IngredientsList'
 
+import { BaseRecipe, Ingredient } from '../data/recipes/types'
+
 const RecipeFormContainer = styled.div`
   width: 50%;
   padding-top: 20px;
 `
 
-export const RecipeForm = (props) => {
-  const [name, setName] = useState(props.recipe?.name)
-  const [description, setDescription] = useState(props.recipe?.description)
+type RecipeFormProps = {
+  recipe?: BaseRecipe
+  handleSubmit: ({ name, description, ingredients }: BaseRecipe) => void
+}
+
+export const RecipeForm = (props: RecipeFormProps) => {
+  const [name, setName] = useState(props.recipe?.name || '')
+  const [description, setDescription] = useState(
+    props.recipe?.description || ''
+  )
   const [ingredients, setIngredients] = useState(
     props.recipe?.ingredients || []
   )
@@ -26,7 +35,13 @@ export const RecipeForm = (props) => {
     <RecipeFormContainer>
       {success && <h1>Successfully Posted, go back to recipes</h1>}
       <form
-        onSubmit={(e) => props.handleSubmit(name, description, ingredients)}
+        onSubmit={(e) =>
+          props.handleSubmit({
+            name,
+            description,
+            ingredients,
+          })
+        }
       >
         <Label>
           <p>Name:</p>
@@ -45,19 +60,10 @@ export const RecipeForm = (props) => {
             rows={6}
           />
         </Label>
-        {/*<Label>*/}
-        {/*  <p>Ingredients (Comma separated):</p>*/}
-        {/*  <Input*/}
-        {/*    type="text"*/}
-        {/*    value={ingredients}*/}
-        {/*    onChange={e => setIngredients(e.target.value)}*/}
-        {/*    fullWidth*/}
-        {/*  />*/}
-        {/*</Label>*/}
 
         <IngredientsList
           ingredients={ingredients}
-          onUpdate={(ingredients) => setIngredients(ingredients)}
+          onUpdate={(ingredients: Ingredient[]) => setIngredients(ingredients)}
         />
         <Button type="submit" value="Submit">
           Submit

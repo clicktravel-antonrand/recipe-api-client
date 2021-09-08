@@ -1,6 +1,14 @@
-import axios from 'axios'
+import axios, { AxiosResponse } from 'axios'
 
-export const getRecipes = async (nameFilter = '') => {
+import {
+  DeleteRecipeParams,
+  GetRecipeByIdParams,
+  PatchRecipeParams,
+  PostRecipeParams,
+  Recipe,
+} from './types'
+
+export const getRecipes = async (nameFilter = ''): Promise<Recipe[]> => {
   const url = nameFilter.length ? `/recipes/?name=${nameFilter}` : '/recipes/'
 
   const response = await axios(url)
@@ -8,12 +16,18 @@ export const getRecipes = async (nameFilter = '') => {
   return response.data
 }
 
-export const getRecipeById = async (recipeId) => {
+export const getRecipeById = async ({
+  recipeId,
+}: GetRecipeByIdParams): Promise<Recipe> => {
   const response = await axios(`/recipes/${recipeId}/`)
   return response.data
 }
 
-export const postRecipe = async ({ name, description, ingredients }) => {
+export const postRecipe = async ({
+  name,
+  description,
+  ingredients,
+}: PostRecipeParams): Promise<Recipe> => {
   const payload = {
     name,
     description,
@@ -28,13 +42,12 @@ export const patchRecipe = async ({
   name,
   description,
   ingredients,
-}) => {
+}: PatchRecipeParams): Promise<Recipe> => {
   if (!recipeId) {
     throw Error('Recipe ID is required')
   }
 
   const payload = {
-    id: recipeId,
     name,
     description,
     ingredients,
@@ -43,6 +56,8 @@ export const patchRecipe = async ({
   return axios.patch(`/recipes/${recipeId}/`, payload)
 }
 
-export const deleteRecipe = async (recipeId) => {
+export const deleteRecipe = async ({
+  recipeId,
+}: DeleteRecipeParams): Promise<AxiosResponse> => {
   return axios.delete(`recipes/${recipeId}/`)
 }

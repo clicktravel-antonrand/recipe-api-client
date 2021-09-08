@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import { useState } from 'react'
 import { Input } from './atoms/Input'
 import { Button } from './atoms/Button'
+import { Ingredient } from '../data/recipes/types'
 
 const ButtonLink = styled.button`
   background: none;
@@ -17,7 +18,12 @@ const ButtonLink = styled.button`
   }
 `
 
-export const IngredientsList = (props) => {
+type IngredientsListProps = {
+  ingredients: Ingredient[]
+  onUpdate: (ingredients: Ingredient[]) => void
+}
+
+export const IngredientsList = (props: IngredientsListProps) => {
   const [ingredients, setIngredients] = useState(props.ingredients)
 
   const [additionalIngredientName, setAdditionalIngredientName] = useState('')
@@ -40,7 +46,7 @@ export const IngredientsList = (props) => {
     }
   }
 
-  const deleteIngredient = (ingredientToRemove) => {
+  const deleteIngredient = (ingredientToRemove: Ingredient) => {
     const ingredientsWithRemovedItem = ingredients.filter(
       (ingredient) => ingredient.name !== ingredientToRemove.name
     )

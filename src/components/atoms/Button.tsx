@@ -1,6 +1,12 @@
 import styled, { css } from 'styled-components'
 
-export const Button = styled.button`
+type ButtonProps = {
+  primary?: boolean
+  secondary?: boolean
+  danger?: boolean
+}
+
+export const Button = styled.button<ButtonProps>`
   background: #3cbbb1;
   border-radius: 3px;
   border: 2px solid #3cbbb1;

@@ -9,23 +9,32 @@ import { getRecipes, deleteRecipe } from '../data/recipes/api'
 
 import { Button } from '../components/atoms/Button'
 import { Link } from 'react-router-dom'
+import { Recipe } from '../data/recipes/types'
 
 export const ViewRecipes = () => {
-  const [recipes, setRecipes] = useState([])
-  const [filter, setFilter] = useState('')
+  const [recipes, setRecipes] = useState<Recipe[]>([])
+  const [filter, setFilter] = useState<string>('')
 
   const fetchRecipes = async () => {
     const result = await getRecipes(filter)
     setRecipes(result)
   }
 
-  const removeRecipe = async (recipeId) => {
-    await deleteRecipe(recipeId)
+  const removeRecipe = async (recipeId: bigint) => {
+    await deleteRecipe({
+      recipeId,
+    })
     await fetchRecipes()
   }
 
-  useEffect(async () => {
-    await fetchRecipes()
+  useEffect(() => {
+    // I have wrapped in an anonymous function as without this TypeScript
+    // complained about the method signature of useEffect returning a promise.
+    const getAllRecipes = async () => {
+      await fetchRecipes()
+    }
+
+    getAllRecipes()
   }, [])
 
   return (
