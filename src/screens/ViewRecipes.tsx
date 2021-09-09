@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react'
 import { PageContainer } from '../components/atoms/PageContainer'
 import { Input } from '../components/atoms/Input'
 
-import { RecipeList } from '../components/RecipeList'
+import { RecipeList } from '../components/recipe/RecipeList'
 
 import { getRecipes, deleteRecipe } from '../data/recipes/api'
 
@@ -20,7 +20,7 @@ export const ViewRecipes = () => {
     setRecipes(result)
   }
 
-  const removeRecipe = async (recipeId: bigint) => {
+  const removeRecipe = async (recipeId: number) => {
     await deleteRecipe({
       recipeId,
     })

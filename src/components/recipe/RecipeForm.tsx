@@ -1,14 +1,14 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
 
-import { Label } from './atoms/Label'
-import { Input } from './atoms/Input'
-import { Button } from './atoms/Button'
-import { TextArea } from './atoms/TextArea'
+import { Label } from '../atoms/Label'
+import { Input } from '../atoms/Input'
+import { Button } from '../atoms/Button'
+import { TextArea } from '../atoms/TextArea'
 
 import { IngredientsList } from './IngredientsList'
 
-import { BaseRecipe, Ingredient } from '../data/recipes/types'
+import { BaseRecipe, Ingredient } from '../../data/recipes/types'
 
 const RecipeFormContainer = styled.div`
   width: 50%;

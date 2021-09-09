@@ -1,9 +1,9 @@
 import { Link } from 'react-router-dom'
 
-import { Button } from './atoms/Button'
+import { Button } from '../atoms/Button'
 
 import styled from 'styled-components'
-import { Recipe } from '../data/recipes/types'
+import { Recipe } from '../../data/recipes/types'
 
 const RecipeHeader = styled.h3`
   color: #4eb6ee;
@@ -37,7 +37,7 @@ const RecipeContainer = styled.div`
 
 type RecipeProps = {
   recipe: Recipe
-  deleteHandler: (recipeId: bigint) => void
+  deleteHandler: (recipeId: number) => void
 }
 
 export const RecipeCard = (props: RecipeProps) => (
@@ -51,7 +51,7 @@ export const RecipeCard = (props: RecipeProps) => (
       <RecipeSubtitle>Ingredients</RecipeSubtitle>
       <IngredientsList>
         {props.recipe.ingredients.map((ingredient) => (
-          <li key={ingredient.name}>{ingredient.name}</li>
+          <li data-testid="ingredient-list-element" key={ingredient.name}>{ingredient.name}</li>
         ))}
       </IngredientsList>
     </div>
@@ -61,11 +61,12 @@ export const RecipeCard = (props: RecipeProps) => (
         onClick={() => {
           props.deleteHandler(props.recipe.id)
         }}
+        data-testid="delete-button"
       >
         Delete Recipe
       </Button>
       <Link to={`/edit-recipe/${props.recipe.id}`}>
-        <Button>Edit Recipe</Button>
+        <Button data-testid="edit-button">Edit Recipe</Button>
       </Link>
     </div>
   </RecipeContainer>

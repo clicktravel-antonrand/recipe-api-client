@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { Link, useParams } from 'react-router-dom'
 
 import { PageContainer } from '../components/atoms/PageContainer'
-import { RecipeForm } from '../components/RecipeForm'
+import { RecipeForm } from '../components/recipe/RecipeForm'
 
 import { getRecipeById, patchRecipe } from '../data/recipes/api'
 
@@ -19,7 +19,7 @@ export const EditRecipe = () => {
   useEffect(() => {
     const getRecipeWithId = async () => {
       const result = await getRecipeById({
-        recipeId: BigInt(recipeId),
+        recipeId: parseInt(recipeId),
       })
       setRecipe(result)
     }
@@ -34,7 +34,7 @@ export const EditRecipe = () => {
   }: BaseRecipe) => {
     console.log('Patch Recipe')
     await patchRecipe({
-      recipeId: BigInt(recipeId),
+      recipeId: parseInt(recipeId),
       name,
       description,
       ingredients,

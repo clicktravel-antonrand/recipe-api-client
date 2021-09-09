@@ -9,11 +9,11 @@ export interface BaseRecipe {
 }
 
 export interface Recipe extends BaseRecipe {
-  id: bigint
+  id: number
 }
 
 export interface GetRecipeByIdParams {
-  recipeId: bigint
+  recipeId: number
 }
 
 export interface PostRecipeParams {
@@ -23,12 +23,12 @@ export interface PostRecipeParams {
 }
 
 export interface PatchRecipeParams {
-  recipeId: bigint
+  recipeId: number
   name?: string
   description?: string
   ingredients?: Ingredient[]
 }
 
 export interface DeleteRecipeParams {
-  recipeId: bigint
+  recipeId: number
 }

@@ -1,9 +1,9 @@
 import styled from 'styled-components'
 
 import { useState } from 'react'
-import { Input } from './atoms/Input'
-import { Button } from './atoms/Button'
-import { Ingredient } from '../data/recipes/types'
+import { Input } from '../atoms/Input'
+import { Button } from '../atoms/Button'
+import { Ingredient } from '../../data/recipes/types'
 
 const ButtonLink = styled.button`
   background: none;
@@ -59,11 +59,13 @@ export const IngredientsList = (props: IngredientsListProps) => {
       <label>
         <p>Add an ingredient:</p>
         <Input
+          data-testid='add-ingredient-input'
           value={additionalIngredientName}
           placeholder="Ingredient name"
           onChange={(event) => setAdditionalIngredientName(event.target.value)}
         />
         <Button
+          data-testid='add-ingredient-button'
           secondary
           onClick={(event) => {
             event.preventDefault()
@@ -79,10 +81,11 @@ export const IngredientsList = (props: IngredientsListProps) => {
         {!ingredients.length && <i>No ingredients</i>}
         <ul>
           {ingredients.map((ingredient) => (
-            <li key={ingredient.name}>
+            <li key={ingredient.name} data-testid='ingredients-list_ingredient-element'>
               <p>
                 {ingredient.name} -{' '}
                 <ButtonLink
+                  data-testid='delete-ingredient-button'
                   onClick={(event) => {
                     event.preventDefault()
                     deleteIngredient(ingredient)
