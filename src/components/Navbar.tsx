@@ -1,7 +1,9 @@
+import React from "react";
+
 import styled from 'styled-components'
 
-import logo from '../resources/logo.png'
 import { Link } from 'react-router-dom'
+import logo from '../resources/logo.png'
 
 const Nav = styled.nav`
   background: #fc5271;
@@ -56,7 +58,7 @@ const Header = styled.h1`
   color: #fff;
 `
 
-export const Navbar = () => (
+export default () => (
   <Nav>
     <NavContainer>
       <NavLogoContainer>

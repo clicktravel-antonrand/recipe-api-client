@@ -1,8 +1,8 @@
+import React, { useState} from 'react';
 import styled from 'styled-components'
 
-import { useState } from 'react'
-import { Input } from '../atoms/Input'
-import { Button } from '../atoms/Button'
+import Input from '../atoms/Input'
+import Button from '../atoms/Button'
 import { Ingredient } from '../../data/recipes/types'
 
 const ButtonLink = styled.button`
@@ -23,8 +23,8 @@ type IngredientsListProps = {
   onUpdate: (ingredients: Ingredient[]) => void
 }
 
-export const IngredientsList = (props: IngredientsListProps) => {
-  const [ingredients, setIngredients] = useState(props.ingredients)
+export default ({ ingredients: initialIngredients, onUpdate } : IngredientsListProps) => {
+  const [ingredients, setIngredients] = useState(initialIngredients)
 
   const [additionalIngredientName, setAdditionalIngredientName] = useState('')
 
@@ -34,15 +34,13 @@ export const IngredientsList = (props: IngredientsListProps) => {
     }
 
     const existingIngredientWithMatchingName = ingredients.find(
-      (ingredient) => {
-        return ingredient.name === additionalIngredientName
-      }
+      (ingredient) => ingredient.name === additionalIngredientName
     )
 
     if (!existingIngredientWithMatchingName) {
       setIngredients([...ingredients, { name: additionalIngredientName }])
       setAdditionalIngredientName('')
-      props.onUpdate([...ingredients, { name: additionalIngredientName }])
+      onUpdate([...ingredients, { name: additionalIngredientName }])
     }
   }
 
@@ -51,14 +49,15 @@ export const IngredientsList = (props: IngredientsListProps) => {
       (ingredient) => ingredient.name !== ingredientToRemove.name
     )
     setIngredients(ingredientsWithRemovedItem)
-    props.onUpdate(ingredientsWithRemovedItem)
+    onUpdate(ingredientsWithRemovedItem)
   }
 
   return (
     <div>
-      <label>
+      <label htmlFor='add-ingredient-input'>
         <p>Add an ingredient:</p>
         <Input
+          id='add-ingredient-input'
           data-testid='add-ingredient-input'
           value={additionalIngredientName}
           placeholder="Ingredient name"

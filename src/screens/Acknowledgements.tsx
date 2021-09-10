@@ -1,6 +1,8 @@
-import { PageContainer } from '../components/atoms/PageContainer'
+import React from "react";
 
-export const Acknowledgements = () => (
+import PageContainer from '../components/atoms/PageContainer'
+
+export default () => (
   <PageContainer>
     <h1>Acknowledgements</h1>
     <p>

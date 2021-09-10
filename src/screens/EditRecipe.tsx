@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import { Link, useParams } from 'react-router-dom'
 
-import { PageContainer } from '../components/atoms/PageContainer'
-import { RecipeForm } from '../components/recipe/RecipeForm'
+import PageContainer from '../components/atoms/PageContainer'
+import RecipeForm from '../components/recipe/RecipeForm'
 
 import { getRecipeById, patchRecipe } from '../data/recipes/api'
 
@@ -12,14 +12,14 @@ type EditRecipeParams = {
   recipeId: string
 }
 
-export const EditRecipe = () => {
+export default () => {
   const { recipeId } = useParams<EditRecipeParams>()
   const [recipe, setRecipe] = useState<Recipe>()
 
   useEffect(() => {
     const getRecipeWithId = async () => {
       const result = await getRecipeById({
-        recipeId: parseInt(recipeId),
+        recipeId: parseInt(recipeId, 10),
       })
       setRecipe(result)
     }
@@ -32,9 +32,8 @@ export const EditRecipe = () => {
     description,
     ingredients,
   }: BaseRecipe) => {
-    console.log('Patch Recipe')
     await patchRecipe({
-      recipeId: parseInt(recipeId),
+      recipeId: parseInt(recipeId, 10),
       name,
       description,
       ingredients,

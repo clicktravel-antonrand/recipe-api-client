@@ -1,11 +1,10 @@
 import React from "react";
 
-import { Router, MemoryRouter } from 'react-router-dom';
-import { createMemoryHistory } from 'history';
+import { MemoryRouter } from 'react-router-dom';
 
-import { render, fireEvent, screen, act, within } from '@testing-library/react'
+import { render, fireEvent, screen, act } from '@testing-library/react'
 import userEvent from '@testing-library/user-event';
-import {RecipeCard} from "./RecipeCard";
+
 import {IngredientsList} from "./IngredientsList";
 
 const ingredients = [
@@ -30,7 +29,6 @@ describe('<RecipeCard>', () => {
         expect(renderedIngredients.length).toEqual(4);
 
         renderedIngredients.forEach((item, index) => {
-            const { getByText } = within(item);
             const expectedName = ingredients[index].name;
             expect(item.textContent).toContain(expectedName)
         });
@@ -73,7 +71,6 @@ describe('<RecipeCard>', () => {
 
         const expectedIngredients = ingredients.slice(1);
         renderedIngredients.forEach((item, index) => {
-            const { getByText } = within(item);
             const expectedName = expectedIngredients[index].name;
             expect(item.textContent).toContain(expectedName)
         });

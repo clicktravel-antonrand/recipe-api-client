@@ -1,12 +1,12 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
 
-import { Label } from '../atoms/Label'
-import { Input } from '../atoms/Input'
-import { Button } from '../atoms/Button'
-import { TextArea } from '../atoms/TextArea'
+import Label from '../atoms/Label'
+import Input from '../atoms/Input'
+import Button from '../atoms/Button'
+import TextArea from '../atoms/TextArea'
 
-import { IngredientsList } from './IngredientsList'
+import IngredientsList from './IngredientsList'
 
 import { BaseRecipe, Ingredient } from '../../data/recipes/types'
 
@@ -20,23 +20,21 @@ type RecipeFormProps = {
   handleSubmit: ({ name, description, ingredients }: BaseRecipe) => void
 }
 
-export const RecipeForm = (props: RecipeFormProps) => {
-  const [name, setName] = useState(props.recipe?.name || '')
+
+const RecipeForm = ({recipe, handleSubmit}: RecipeFormProps) => {
+  const [name, setName] = useState(recipe?.name || '')
   const [description, setDescription] = useState(
-    props.recipe?.description || ''
+    recipe?.description || ''
   )
   const [ingredients, setIngredients] = useState(
-    props.recipe?.ingredients || []
+    recipe?.ingredients || []
   )
-
-  const [success, setSuccess] = useState(false)
 
   return (
     <RecipeFormContainer>
-      {success && <h1>Successfully Posted, go back to recipes</h1>}
       <form
-        onSubmit={(e) =>
-          props.handleSubmit({
+        onSubmit={() =>
+          handleSubmit({
             name,
             description,
             ingredients,
@@ -63,7 +61,7 @@ export const RecipeForm = (props: RecipeFormProps) => {
 
         <IngredientsList
           ingredients={ingredients}
-          onUpdate={(ingredients: Ingredient[]) => setIngredients(ingredients)}
+          onUpdate={(updatedIngredients: Ingredient[]) => setIngredients(updatedIngredients)}
         />
         <Button type="submit" value="Submit">
           Submit
@@ -72,3 +70,9 @@ export const RecipeForm = (props: RecipeFormProps) => {
     </RecipeFormContainer>
   )
 }
+
+RecipeForm.defaultProps = {
+    recipe: undefined
+}
+
+export default RecipeForm

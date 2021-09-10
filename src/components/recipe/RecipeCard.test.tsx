@@ -3,7 +3,7 @@ import React from "react";
 import { Router, MemoryRouter } from 'react-router-dom';
 import { createMemoryHistory } from 'history';
 
-import { render, fireEvent, waitFor, screen, within } from '@testing-library/react'
+import { render, fireEvent, screen, within } from '@testing-library/react'
 import {RecipeCard} from "./RecipeCard";
 
 const recipe = {
@@ -23,7 +23,7 @@ const deleteHandler = jest.fn();
 describe('<RecipeCard>', () => {
 
     test('it should display the recipe name', async () => {
-        const { getByPlaceholderText, findByText } = render(
+        const { findByText } = render(
             <MemoryRouter>
                 <RecipeCard recipe={recipe} deleteHandler={deleteHandler} />
             </MemoryRouter>
@@ -35,7 +35,7 @@ describe('<RecipeCard>', () => {
     })
 
     test('it should display the recipe name, description and title', async () => {
-        const { getByPlaceholderText, findByText, getAllByTestId } = render(
+        const { findByText, getAllByTestId } = render(
             <MemoryRouter>
                 <RecipeCard recipe={recipe} deleteHandler={deleteHandler} />
             </MemoryRouter>
@@ -56,7 +56,7 @@ describe('<RecipeCard>', () => {
     })
 
     test('it should call the deleteHandler when the delete recipe button is clicked', async () => {
-        const { getByPlaceholderText, findByText, getAllByTestId } = render(
+        render(
             <MemoryRouter>
                 <RecipeCard recipe={recipe} deleteHandler={deleteHandler} />
             </MemoryRouter>

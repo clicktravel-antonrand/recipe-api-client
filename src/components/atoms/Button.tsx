@@ -6,7 +6,7 @@ type ButtonProps = {
   danger?: boolean
 }
 
-export const Button = styled.button<ButtonProps>`
+export default styled.button<ButtonProps>`
   background: #3cbbb1;
   border-radius: 3px;
   border: 2px solid #3cbbb1;

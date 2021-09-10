@@ -58,6 +58,4 @@ export const patchRecipe = async ({
 
 export const deleteRecipe = async ({
   recipeId,
-}: DeleteRecipeParams): Promise<AxiosResponse> => {
-  return axios.delete(`recipes/${recipeId}/`)
-}
+}: DeleteRecipeParams): Promise<AxiosResponse> => axios.delete(`recipes/${recipeId}/`)

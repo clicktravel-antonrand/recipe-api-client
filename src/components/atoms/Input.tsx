@@ -4,7 +4,7 @@ type InputProps = {
   fullWidth?: boolean
 }
 
-export const Input = styled.input<InputProps>`
+export default styled.input<InputProps>`
   padding: 0.6em 0.5em;
   background-color: #fff;
   border: 2px solid #797979;

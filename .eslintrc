@@ -1,0 +1,53 @@
+{
+  "parser": "@typescript-eslint/parser",
+  "plugins": [
+    "jest",
+    "react-hooks",
+    "@typescript-eslint",
+    "testing-library"
+  ],
+  "settings": {
+    "react": {
+      "version": "17.0.2"
+    },
+    "import/resolver": {
+      "node": {
+        "extensions": [".js", ".jsx", ".ts", ".tsx"]
+      }
+    }
+  },
+  "parserOptions": {
+    "sourceType": "module",
+    "allowImportExportEverywhere": false,
+    "codeFrame": false
+  },
+  "extends": ["airbnb", "prettier"],
+  "env": {
+    "browser": true,
+    "jest": true
+  },
+  "rules": {
+    "react/jsx-filename-extension": [ "warn", {"extensions": [".tsx"]} ],
+    "no-use-before-define": "off",
+    "no-unused-vars": "off",
+    "@typescript-eslint/no-unused-vars": "error",
+    "@typescript-eslint/no-use-before-define": ["error"],
+    "import/extensions": [
+      "error",
+      "ignorePackages",
+      {
+        "js": "never",
+        "jsx": "never",
+        "ts": "never",
+        "tsx": "never"
+      }
+    ],
+    "jsx-a11y/label-has-associated-control": [ 2, {
+      "labelComponents": ["Label"],
+      "labelAttributes": ["label"],
+      "controlComponents": ["Input", "TextArea"],
+      "depth": 3
+    }
+    ]
+  }
+}

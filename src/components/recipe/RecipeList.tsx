@@ -1,6 +1,8 @@
+import React from "react";
+
 import styled from 'styled-components'
 
-import { RecipeCard } from './RecipeCard'
+import RecipeCard from './RecipeCard'
 import { Recipe } from '../../data/recipes/types'
 
 const RecipeContainer = styled.div`
@@ -14,20 +16,18 @@ type RecipeListProps = {
   deleteHandler: (recipeId: number) => void
 }
 
-export const RecipeList = (props: RecipeListProps) => {
-  return (
+export default ({recipes, deleteHandler} : RecipeListProps) => (
     <RecipeContainer>
-      {props.recipes &&
-        props.recipes.map((recipe) => (
+      {recipes &&
+        recipes.map((recipe) => (
           <RecipeCard
             key={Number(recipe.id)}
             recipe={recipe}
-            deleteHandler={props.deleteHandler}
+            deleteHandler={deleteHandler}
           />
         ))}
-      {(!props.recipes || !props.recipes.length) && (
+      {(!recipes || !recipes.length) && (
         <h3>There are no recipes</h3>
       )}
     </RecipeContainer>
   )
-}

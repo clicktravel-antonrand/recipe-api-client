@@ -1,17 +1,17 @@
 import React, { useState, useEffect } from 'react'
 
-import { PageContainer } from '../components/atoms/PageContainer'
-import { Input } from '../components/atoms/Input'
+import { Link } from 'react-router-dom'
+import PageContainer from '../components/atoms/PageContainer'
+import Input from '../components/atoms/Input'
 
-import { RecipeList } from '../components/recipe/RecipeList'
+import RecipeList from '../components/recipe/RecipeList'
 
 import { getRecipes, deleteRecipe } from '../data/recipes/api'
 
-import { Button } from '../components/atoms/Button'
-import { Link } from 'react-router-dom'
+import Button from '../components/atoms/Button'
 import { Recipe } from '../data/recipes/types'
 
-export const ViewRecipes = () => {
+export default () => {
   const [recipes, setRecipes] = useState<Recipe[]>([])
   const [filter, setFilter] = useState<string>('')
 
@@ -44,7 +44,7 @@ export const ViewRecipes = () => {
         <Link to="/add-recipe">add your own</Link>...
       </h1>
       <div>
-        <label>
+        <label htmlFor="recipe-filter">
           <p>Search for a recipe:</p>
           <Input
             id="recipe-filter"

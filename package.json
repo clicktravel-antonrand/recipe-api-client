@@ -13,7 +13,8 @@
     "react-router-dom": "^5.2.1",
     "react-scripts": "4.0.3",
     "styled-components": "^5.3.1",
-    "web-vitals": "^1.1.2"
+    "web-vitals": "^1.1.2",
+    "history": "^5.0.1"
   },
   "devDependencies": {
     "@types/jest": "26.0.23",
@@ -30,6 +31,14 @@
     "@types/testing-library__user-event": "4.2.0",
     "@typescript-eslint/eslint-plugin": "4.28.3",
     "@typescript-eslint/parser": "4.27.0",
+    "babel-eslint": "^10.1.0",
+    "eslint": "^7.32.0",
+    "eslint-config-airbnb": "^18.2.1",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-import": "^2.24.2",
+    "eslint-plugin-react": "^7.25.1",
+    "eslint-plugin-react-hooks": "4.2.0",
+    "eslint-plugin-testing-library": "4.6.0",
     "jest-environment-jsdom-sixteen": "1.0.3",
     "prettier": "2.3.0",
     "typescript": "4.3.3"
@@ -39,6 +48,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test --env=jest-environment-jsdom-sixteen",
     "eject": "react-scripts eject",
+    "lint": "eslint --ext .js --ext .tsx --max-warnings 0 src/",
     "prettier": "prettier",
     "prettier:fix": "npm run prettier -- --write 'src/**/*.ts' 'src/**/*.tsx'",
     "typecheck": "tsc --noEmit -p tsconfig.json"
