@@ -20,19 +20,15 @@ type RecipeFormProps = {
   handleSubmit: ({ name, description, ingredients }: BaseRecipe) => void
 }
 
-
-const RecipeForm = ({recipe, handleSubmit}: RecipeFormProps) => {
+const RecipeForm = ({ recipe, handleSubmit }: RecipeFormProps) => {
   const [name, setName] = useState(recipe?.name || '')
-  const [description, setDescription] = useState(
-    recipe?.description || ''
-  )
-  const [ingredients, setIngredients] = useState(
-    recipe?.ingredients || []
-  )
+  const [description, setDescription] = useState(recipe?.description || '')
+  const [ingredients, setIngredients] = useState(recipe?.ingredients || [])
 
   return (
     <RecipeFormContainer>
       <form
+        name="recipe-form"
         onSubmit={() =>
           handleSubmit({
             name,
@@ -41,18 +37,20 @@ const RecipeForm = ({recipe, handleSubmit}: RecipeFormProps) => {
           })
         }
       >
-        <Label>
+        <Label htmlFor="recipe-name">
           <p>Name:</p>
           <Input
+            id="recipe-name"
             type="text"
             value={name}
             onChange={(e) => setName(e.target.value)}
             fullWidth
           />
         </Label>
-        <Label>
+        <Label htmlFor="recipe-description">
           <p>Description:</p>
           <TextArea
+            id="recipe-description"
             value={description}
             onChange={(e) => setDescription(e.target.value)}
             rows={6}
@@ -61,9 +59,16 @@ const RecipeForm = ({recipe, handleSubmit}: RecipeFormProps) => {
 
         <IngredientsList
           ingredients={ingredients}
-          onUpdate={(updatedIngredients: Ingredient[]) => setIngredients(updatedIngredients)}
+          onUpdate={(updatedIngredients: Ingredient[]) =>
+            setIngredients(updatedIngredients)
+          }
         />
-        <Button type="submit" value="Submit">
+        <Button
+          data-testid="submit-recipe-form-button"
+          id="submit-recipe"
+          type="submit"
+          value="Submit"
+        >
           Submit
         </Button>
       </form>
@@ -72,7 +77,7 @@ const RecipeForm = ({recipe, handleSubmit}: RecipeFormProps) => {
 }
 
 RecipeForm.defaultProps = {
-    recipe: undefined
+  recipe: undefined,
 }
 
 export default RecipeForm

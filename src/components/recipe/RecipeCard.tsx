@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react'
 
 import { Link } from 'react-router-dom'
 
@@ -42,7 +42,7 @@ type RecipeProps = {
   deleteHandler: (recipeId: number) => void
 }
 
-export default ({recipe, deleteHandler}: RecipeProps) => (
+export default ({ recipe, deleteHandler }: RecipeProps) => (
   <RecipeContainer>
     <RecipeHeader>{recipe.name}</RecipeHeader>
     <div>
@@ -53,7 +53,9 @@ export default ({recipe, deleteHandler}: RecipeProps) => (
       <RecipeSubtitle>Ingredients</RecipeSubtitle>
       <IngredientsList>
         {recipe.ingredients.map((ingredient) => (
-          <li data-testid="ingredient-list-element" key={ingredient.name}>{ingredient.name}</li>
+          <li data-testid="ingredient-list-element" key={ingredient.name}>
+            {ingredient.name}
+          </li>
         ))}
       </IngredientsList>
     </div>

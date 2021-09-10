@@ -1,4 +1,4 @@
-import React, { useState} from 'react';
+import React, { useState } from 'react'
 import styled from 'styled-components'
 
 import Input from '../atoms/Input'
@@ -23,7 +23,10 @@ type IngredientsListProps = {
   onUpdate: (ingredients: Ingredient[]) => void
 }
 
-export default ({ ingredients: initialIngredients, onUpdate } : IngredientsListProps) => {
+export default ({
+  ingredients: initialIngredients,
+  onUpdate,
+}: IngredientsListProps) => {
   const [ingredients, setIngredients] = useState(initialIngredients)
 
   const [additionalIngredientName, setAdditionalIngredientName] = useState('')
@@ -54,17 +57,17 @@ export default ({ ingredients: initialIngredients, onUpdate } : IngredientsListP
 
   return (
     <div>
-      <label htmlFor='add-ingredient-input'>
+      <label htmlFor="add-ingredient-input">
         <p>Add an ingredient:</p>
         <Input
-          id='add-ingredient-input'
-          data-testid='add-ingredient-input'
+          id="add-ingredient-input"
+          data-testid="add-ingredient-input"
           value={additionalIngredientName}
           placeholder="Ingredient name"
           onChange={(event) => setAdditionalIngredientName(event.target.value)}
         />
         <Button
-          data-testid='add-ingredient-button'
+          data-testid="add-ingredient-button"
           secondary
           onClick={(event) => {
             event.preventDefault()
@@ -80,11 +83,14 @@ export default ({ ingredients: initialIngredients, onUpdate } : IngredientsListP
         {!ingredients.length && <i>No ingredients</i>}
         <ul>
           {ingredients.map((ingredient) => (
-            <li key={ingredient.name} data-testid='ingredients-list_ingredient-element'>
+            <li
+              key={ingredient.name}
+              data-testid="ingredients-list_ingredient-element"
+            >
               <p>
                 {ingredient.name} -{' '}
                 <ButtonLink
-                  data-testid='delete-ingredient-button'
+                  data-testid="delete-ingredient-button"
                   onClick={(event) => {
                     event.preventDefault()
                     deleteIngredient(ingredient)

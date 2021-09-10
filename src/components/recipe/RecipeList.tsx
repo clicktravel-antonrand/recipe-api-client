@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react'
 
 import styled from 'styled-components'
 
@@ -16,18 +16,16 @@ type RecipeListProps = {
   deleteHandler: (recipeId: number) => void
 }
 
-export default ({recipes, deleteHandler} : RecipeListProps) => (
-    <RecipeContainer>
-      {recipes &&
-        recipes.map((recipe) => (
-          <RecipeCard
-            key={Number(recipe.id)}
-            recipe={recipe}
-            deleteHandler={deleteHandler}
-          />
-        ))}
-      {(!recipes || !recipes.length) && (
-        <h3>There are no recipes</h3>
-      )}
-    </RecipeContainer>
-  )
+export default ({ recipes, deleteHandler }: RecipeListProps) => (
+  <RecipeContainer>
+    {recipes &&
+      recipes.map((recipe) => (
+        <RecipeCard
+          key={Number(recipe.id)}
+          recipe={recipe}
+          deleteHandler={deleteHandler}
+        />
+      ))}
+    {(!recipes || !recipes.length) && <h3>There are no recipes</h3>}
+  </RecipeContainer>
+)

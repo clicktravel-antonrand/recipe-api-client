@@ -3,7 +3,6 @@ import React, { Fragment } from 'react'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import GlobalStyle from './GlobalStyle'
 
-
 import ViewRecipes from './screens/ViewRecipes'
 import AddRecipe from './screens/AddRecipe'
 import EditRecipe from './screens/EditRecipe'
