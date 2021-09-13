@@ -1,8 +1,21 @@
-# Getting Started with Create React App
+# Recipe API Client
+
+## Description
+
+TK onboarding exercise using React to implement an interface to interact with the [Recipe CRUD API](https://github.com/clicktravel-antonrand/recipe-api/).
+
+## Future Improvements / Known Issues
+I narrowed the scope of the exercise due to time constraints, but if any of these are critical I am happy to implement:
+
+- Lack of "Loading" spinner - Asynchronous calls (The REST requests) do not show a loading spinner. In production, I would have a progress indicator so the user knows their request is being actioned.
+- REST error handling - the implementation is very happy path orientated, but in production I would consider unhappy paths for a good UX. If a request is rejected - an error message should be displayed to the user.
+- Delete Button confirmation modal - The delete action should have a modal asking users to confirm they want to apply that action. As things stand, clicking the button will remove the recipe. I saw that portals may be a way of achieving this.
+- Fabricator - I could clean my tests up by using Fabricator to generate random objects based on the TypeScript definitions.
+- Test duplication - Some of the actions in my tests are common and would benefit from being refactored into utility classes.
+
+## Getting Started
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
-## Available Scripts
 
 In the project directory, you can run:
 
@@ -39,32 +52,20 @@ Instead, it will copy all the configuration files and the transitive dependencie
 
 You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
-## Learn More
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### Contributing
+Ensure the tests pass with the following command:
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+`npm test`
 
-### Code Splitting
+Ensure linting is successful with the following comment:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+`npm run lint`
 
-### Analyzing the Bundle Size
+Ensure files have been formatted correctly with the following comment:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+`npm run prettier:fix`
 
-### Making a Progressive Web App
+Check types with the following comment:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+`npm run typecheck`
